@@ -1,0 +1,169 @@
+/* ==========================================================
+   SkyNest Co-Living - main stylesheet (used by all 6 pages)
+   Sections: 1 Basics, 2 Header, 3 Hero, 4 Sections & cards,
+   5 Packages, 6 Facilities, 7 FAQ, 8 Contact, 9 Footer,
+   10 Mobile
+   ========================================================== */
+
+/* 1. BASICS ------------------------------------------------ */
+:root {
+  --navy: #12263f;      /* main dark colour */
+  --sky: #2f7fc1;       /* main blue (links, buttons) */
+  --light: #eef5fb;     /* light background for alternate sections */
+  --amber: #f2a93b;     /* highlight colour */
+  --text: #1f2f3f;
+  --grey: #5a6b7b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+h1, h2, h3 { color: var(--navy); line-height: 1.2; }
+a { color: var(--sky); }
+
+/* keeps page content centred and not too wide */
+.container { width: 90%; max-width: 1100px; margin: 0 auto; }
+
+/* visible outline for keyboard users (accessibility) */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* "skip to content" link, only shows when tabbed to */
+.skip-link { position: absolute; left: -999px; background: white; padding: 8px; }
+.skip-link:focus { left: 10px; top: 10px; z-index: 100; }
+
+/* buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 6px;
+  background: var(--sky);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn { margin: 4px 4px 4px 0; }
+.btn:hover { background: var(--navy); }
+.btn-light { background: white; color: var(--navy); }
+.btn-light:hover { background: var(--amber); }
+.btn-outline { background: transparent; border: 2px solid white; color: white; }
+.btn-outline:hover { background: white; color: var(--navy); }
+
+/* 2. HEADER ------------------------------------------------ */
+.header { background: white; border-bottom: 1px solid #d8e2ec; position: sticky; top: 0; z-index: 50; }
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--navy); font-weight: bold; font-size: 22px; }
+.logo img { width: 40px; height: 40px; }
+.nav-links { display: flex; align-items: center; gap: 20px; }
+.nav-links a { text-decoration: none; color: var(--navy); font-weight: bold; padding: 6px 2px; }
+.nav-links a:hover, .nav-links a.active { color: var(--sky); border-bottom: 3px solid var(--amber); }
+.nav-links a.btn { color: white; border: none; padding: 10px 18px; }
+.nav-links a.btn:hover { color: white; }
+.menu-button { display: none; font-size: 28px; background: none; border: none; cursor: pointer; color: var(--navy); }
+
+/* 3. HERO (big banner at top of pages) --------------------- */
+.hero {
+  background: linear-gradient(rgba(18,38,63,.65), rgba(18,38,63,.65)), url("../images/hero.png") center/cover;
+  color: white;
+  text-align: center;
+  padding: 110px 0;
+}
+.hero h1 { color: white; font-size: 44px; margin: 0 0 15px; }
+.hero p { font-size: 20px; max-width: 650px; margin: 0 auto 25px; }
+.hero .btn { margin: 5px; }
+
+/* smaller banner used on the other pages */
+.page-banner { background: var(--navy); color: white; text-align: center; padding: 50px 0; }
+.page-banner h1 { color: white; margin: 0 0 10px; }
+.page-banner p { max-width: 650px; margin: 0 auto; }
+
+/* 4. SECTIONS & CARDS -------------------------------------- */
+.section { padding: 60px 0; }
+.section-light { background: var(--light); }
+.section-title { text-align: center; margin-bottom: 10px; }
+.section-intro { text-align: center; color: var(--grey); max-width: 650px; margin: 0 auto 35px; }
+
+/* grid: cards sit side by side and wrap by themselves on small screens */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+
+.card { background: white; border: 1px solid #d8e2ec; border-radius: 10px; overflow: hidden; }
+.card img { width: 100%; height: 190px; object-fit: cover; }
+.card-body { padding: 18px; }
+.card-body h3 { margin: 0 0 8px; }
+.card-body p { margin: 0 0 12px; color: var(--grey); }
+
+/* image on one side, text on the other (about page, packages) */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.split img { border-radius: 10px; }
+
+/* 5. PACKAGES PAGE ----------------------------------------- */
+.package { margin-bottom: 50px; }
+.package ul { padding-left: 20px; }
+.package li { margin-bottom: 6px; }
+.package-label { display: inline-block; background: var(--amber); color: var(--navy); font-weight: bold; padding: 3px 12px; border-radius: 20px; font-size: 14px; }
+.package.reverse .split img { order: 2; }
+
+/* 6. FACILITIES PAGE --------------------------------------- */
+.facility-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.facility-grid img { height: 150px; }
+
+/* 7. FAQ PAGE ---------------------------------------------- */
+.faq { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid #d8e2ec; }
+.faq-question {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 18px 5px; font-size: 18px; font-weight: bold; color: var(--navy); cursor: pointer;
+  display: flex; justify-content: space-between;
+}
+.faq-answer { display: none; padding: 0 5px 18px; color: var(--grey); }
+.faq-item.open .faq-answer { display: block; }   /* JS adds the "open" class */
+
+/* 8. CONTACT PAGE ------------------------------------------ */
+.contact-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; }
+.contact-box { background: var(--light); border-radius: 10px; padding: 25px; }
+form label { display: block; font-weight: bold; margin: 14px 0 5px; }
+form input, form select, form textarea {
+  width: 100%; padding: 10px; font-size: 16px; font-family: inherit;
+  border: 2px solid #b9c8d6; border-radius: 6px;
+}
+form input.error, form select.error, form textarea.error { border-color: #c0392b; }
+.message { display: none; margin-top: 15px; padding: 12px; border-radius: 6px; font-weight: bold; }
+.message.success { display: block; background: #dff5e6; color: #1e6b3a; }
+.message.problem { display: block; background: #fbe3e0; color: #9b2c20; }
+
+/* 9. FOOTER ------------------------------------------------ */
+.footer { background: var(--navy); color: #d3e0ec; padding: 40px 0 15px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+.footer h3 { color: white; margin-top: 0; }
+.footer a { color: #d3e0ec; display: block; margin-bottom: 6px; }
+.footer a.logo { display: flex; color: white; }
+.footer .logo { color: white; margin-bottom: 10px; }
+.copyright { border-top: 1px solid #3a5272; margin-top: 25px; padding-top: 15px; text-align: center; font-size: 14px; }
+
+/* 10. MOBILE (screens under 800px wide) -------------------- */
+@media (max-width: 800px) {
+  .menu-button { display: block; }
+  .nav-links {
+    display: none;                 
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: white; flex-direction: column; align-items: flex-start;
+    padding: 15px 5%; border-bottom: 1px solid #d8e2ec;
+  }
+  .nav-links.open { display: flex; }   
+  .hero { padding: 70px 0; }
+  .hero h1 { font-size: 32px; }
+  .split, .contact-layout { grid-template-columns: 1fr; }
+  .package.reverse .split img { order: 0; }
+}
